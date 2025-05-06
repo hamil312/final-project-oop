@@ -14,19 +14,18 @@ public class ConsultaMedica {
     private String diagnostico;
     private String prescripcion;
     private String observaciones;
-    private String medico;
+    private Long medicoId;
     private Long citaId;
 
     public ConsultaMedica() {
     }
 
-    public ConsultaMedica(String fecha, String diagnostico, String prescripcion, String observaciones, String medico,
-            Long citaId) {
+    public ConsultaMedica(String fecha, String diagnostico, String prescripcion, String observaciones, Long medicoId, Long citaId) {
         this.fecha = fecha;
         this.diagnostico = diagnostico;
         this.prescripcion = prescripcion;
         this.observaciones = observaciones;
-        this.medico = medico;
+        this.medicoId = medicoId;
         this.citaId = citaId;
     }
     
@@ -60,11 +59,11 @@ public class ConsultaMedica {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-    public String getMedico() {
-        return medico;
+    public Long getmedicoId() {
+        return medicoId;
     }
-    public void setMedico(String medico) {
-        this.medico = medico;
+    public void setmedicoId(Long medicoId) {
+        this.medicoId = medicoId;
     }
     public Long getCitaId() {
         return citaId;
