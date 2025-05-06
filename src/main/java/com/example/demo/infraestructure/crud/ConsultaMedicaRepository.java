@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ConsultaMedicaRepository extends JpaRepository<ConsultaMedica, Long> {
-
+    ConsultaMedica findByCitaId(Long citaId);
+    ConsultaMedica findByPacienteId(Long pacienteId);
 }
