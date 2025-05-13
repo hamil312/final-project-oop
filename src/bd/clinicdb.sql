@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `citas_medicas`
+--
+
+DROP TABLE IF EXISTS `citas_medicas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `citas_medicas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `fecha` datetime DEFAULT NULL,
+  `medico_id` int DEFAULT NULL,
+  `paciente_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `citas_medicas`
+--
+
+LOCK TABLES `citas_medicas` WRITE;
+/*!40000 ALTER TABLE `citas_medicas` DISABLE KEYS */;
+INSERT INTO `citas_medicas` VALUES (1,NULL,NULL,NULL),(2,'2004-12-12 00:00:00',3,1);
+/*!40000 ALTER TABLE `citas_medicas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `consultas_medicas`
 --
 
@@ -28,11 +55,11 @@ CREATE TABLE `consultas_medicas` (
   `diagnostico` varchar(45) DEFAULT NULL,
   `prescripcion` varchar(45) DEFAULT NULL,
   `observaciones` varchar(45) DEFAULT NULL,
-  `medicoId` int DEFAULT NULL,
-  `citaId` int DEFAULT NULL,
-  `pacienteId` int DEFAULT NULL,
+  `medico_id` int DEFAULT NULL,
+  `cita_id` int DEFAULT NULL,
+  `paciente_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +68,7 @@ CREATE TABLE `consultas_medicas` (
 
 LOCK TABLES `consultas_medicas` WRITE;
 /*!40000 ALTER TABLE `consultas_medicas` DISABLE KEYS */;
+INSERT INTO `consultas_medicas` VALUES (2,'2004-12-12 00:00:00','Hi','Hi Again','none',3,2,1);
 /*!40000 ALTER TABLE `consultas_medicas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-12 21:37:08
+-- Dump completed on 2025-05-13 17:47:07

@@ -53,7 +53,7 @@ public class ConsultaMedicaController {
     }
 
     @GetMapping("/paciente/{id}")
-    public MedicalConsultationDTO getMedicalConsultationByPatientId(@PathVariable long id){
+    public List<MedicalConsultationDTO> getMedicalConsultationByPatientId(@PathVariable long id){
         return consultaService.getMedicalConsultationByPatientId(id);
     }
     

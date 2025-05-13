@@ -33,7 +33,7 @@ public class ConsultaMedicaService {
     public MedicalConsultationDTO getMedicalConsultationByAppointmentId(Long id) {
         return consultaMedicaImpl.getMedicalConsultationByAppointmentId(id);
     }
-    public MedicalConsultationDTO getMedicalConsultationByPatientId(Long id) {
+    public List<MedicalConsultationDTO> getMedicalConsultationByPatientId(Long id) {
         return consultaMedicaImpl.getMedicalConsultationByPatientId(id);
     }
 }

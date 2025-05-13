@@ -11,6 +11,6 @@ public interface IConsultaMedica {
     public MedicalConsultationDTO updateMedicalConsultationById(Long id, MedicalConsultationDTO dto);
     public void deleteMedicalConsultationById(Long id);
     public MedicalConsultationDTO getMedicalConsultationByAppointmentId(Long id);
-    public MedicalConsultationDTO getMedicalConsultationByPatientId(Long id);
+    public List<MedicalConsultationDTO> getMedicalConsultationByPatientId(Long id);
 
 }

@@ -39,6 +39,9 @@ public class ConsultaMedicaImpl implements IConsultaMedica {
     @Override
     public MedicalConsultationDTO saveMedicalConsultation(MedicalConsultationDTO dto) {
         AppointmentDTO appointment = appointmentClient.getAppointmentById(dto.getAppointmentId());
+        if(consultaRepository.findByCitaId(appointment.getId()) != null){
+            throw new RuntimeException("La cita ya tiene una consulta médica asociada");
+        }
 
         dto.setDate(appointment.getDate());
         dto.setMedicId(appointment.getMedicId());
@@ -73,8 +76,8 @@ public class ConsultaMedicaImpl implements IConsultaMedica {
     }
 
     @Override
-    public MedicalConsultationDTO getMedicalConsultationByPatientId(Long id){
-        ConsultaMedica consultaMedica = consultaRepository.findByPacienteId(id);
-        return consultaMapper.toMedicalConsultationDTO(consultaMedica);
+    public List<MedicalConsultationDTO> getMedicalConsultationByPatientId(Long id){
+        List<ConsultaMedica> consultaMedica = consultaRepository.findByPacienteId(id);
+        return consultaMapper.toMedicalConsultationsDTO(consultaMedica);
     }
 }
