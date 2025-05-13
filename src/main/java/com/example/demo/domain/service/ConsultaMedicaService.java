@@ -21,6 +21,15 @@ public class ConsultaMedicaService {
     public MedicalConsultationDTO saveMedicalConsultation(MedicalConsultationDTO dto) {
         return consultaMedicaImpl.saveMedicalConsultation(dto);
     }
+
+    public MedicalConsultationDTO updateMedicalConsultationById(Long id, MedicalConsultationDTO dto) {
+        return consultaMedicaImpl.updateMedicalConsultationById(id, dto);
+    }
+
+    public void deleteMedicalConsultationById(Long id) {
+        consultaMedicaImpl.deleteMedicalConsultationById(id);
+    }
+
     public MedicalConsultationDTO getMedicalConsultationByAppointmentId(Long id) {
         return consultaMedicaImpl.getMedicalConsultationByAppointmentId(id);
     }

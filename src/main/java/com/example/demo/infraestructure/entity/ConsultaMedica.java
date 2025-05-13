@@ -69,10 +69,10 @@ public class ConsultaMedica {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-    public Long getmedicoId() {
+    public Long getMedicoId() {
         return medicoId;
     }
-    public void setmedicoId(Long medicoId) {
+    public void setMedicoId(Long medicoId) {
         this.medicoId = medicoId;
     }
     public Long getCitaId() {

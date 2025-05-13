@@ -8,6 +8,8 @@ public interface IConsultaMedica {
     public List<MedicalConsultationDTO> getAllMedicalConsultations();
     public MedicalConsultationDTO getMedicalConsultationById(Long id);
     public MedicalConsultationDTO saveMedicalConsultation(MedicalConsultationDTO dto);
+    public MedicalConsultationDTO updateMedicalConsultationById(Long id, MedicalConsultationDTO dto);
+    public void deleteMedicalConsultationById(Long id);
     public MedicalConsultationDTO getMedicalConsultationByAppointmentId(Long id);
     public MedicalConsultationDTO getMedicalConsultationByPatientId(Long id);
 

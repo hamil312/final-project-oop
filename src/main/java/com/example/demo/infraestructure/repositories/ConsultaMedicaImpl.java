@@ -38,6 +38,24 @@ public class ConsultaMedicaImpl implements IConsultaMedica {
     }
 
     @Override
+    public MedicalConsultationDTO updateMedicalConsultationById(Long id, MedicalConsultationDTO consultationDTO) {
+        ConsultaMedica consultaMedica =  consultaRepository.findById(id).orElseThrow(() -> new RuntimeException("ConsultaMedica no encontrado"));
+        ConsultaMedica ConsultaMedicaUpdate = consultaMapper.toConsultaMedica(consultationDTO);
+        consultaMedica.setFecha(ConsultaMedicaUpdate.getFecha());
+        consultaMedica.setDiagnostico(ConsultaMedicaUpdate.getDiagnostico());
+        consultaMedica.setPrescripcion(ConsultaMedicaUpdate.getPrescripcion());
+        consultaMedica.setMedicoId(ConsultaMedicaUpdate.getMedicoId());
+        consultaMedica.setCitaId(ConsultaMedicaUpdate.getCitaId());
+        consultaMedica.setPacienteId(ConsultaMedicaUpdate.getPacienteId());
+        return consultaMapper.toMedicalConsultationDTO(consultaRepository.save(consultaMedica));
+    }
+
+    @Override
+    public void deleteMedicalConsultationById(Long id) {
+        consultaRepository.deleteById(id);
+    }
+
+    @Override
     public MedicalConsultationDTO getMedicalConsultationByAppointmentId(Long id){
         ConsultaMedica consultaMedica = consultaRepository.findByCitaId(id);
         return consultaMapper.toMedicalConsultationDTO(consultaMedica);
