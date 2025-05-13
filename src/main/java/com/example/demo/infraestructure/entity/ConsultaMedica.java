@@ -81,7 +81,4 @@ public class ConsultaMedica {
     public void setCitaId(Long citaId) {
         this.citaId = citaId;
     }
-
-    
-
 }

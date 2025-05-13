@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.infraestructure.client.CitaCliente;
 import com.example.demo.infraestructure.crud.ConsultaMedicaRepository;
 import com.example.demo.infraestructure.entity.ConsultaMedica;
 import com.example.demo.infraestructure.mapper.ConsultaMapper;
+import com.example.demo.domain.dto.AppointmentDTO;
 import com.example.demo.domain.dto.MedicalConsultationDTO;
 import com.example.demo.domain.repository.IConsultaMedica;
 
@@ -18,6 +20,9 @@ public class ConsultaMedicaImpl implements IConsultaMedica {
 
     @Autowired
     private ConsultaMapper consultaMapper;
+
+    @Autowired
+    private CitaCliente appointmentClient;
 
     @Override
     public List<MedicalConsultationDTO> getAllMedicalConsultations() {
@@ -32,7 +37,13 @@ public class ConsultaMedicaImpl implements IConsultaMedica {
     }
 
     @Override
-    public MedicalConsultationDTO saveMedicalConsultation(MedicalConsultationDTO dto){
+    public MedicalConsultationDTO saveMedicalConsultation(MedicalConsultationDTO dto) {
+        AppointmentDTO appointment = appointmentClient.getAppointmentById(dto.getAppointmentId());
+
+        dto.setDate(appointment.getDate());
+        dto.setMedicId(appointment.getMedicId());
+        dto.setPatientId(appointment.getPatientId());
+
         ConsultaMedica consultaMedica = consultaMapper.toConsultaMedica(dto);
         return consultaMapper.toMedicalConsultationDTO(consultaRepository.save(consultaMedica));
     }

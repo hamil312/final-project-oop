@@ -58,8 +58,4 @@ public class MedicalConsultationDTO {
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
-
-    
-
-    
 }
