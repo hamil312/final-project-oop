@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.domain.dto.DiagnosisDTO;
 import com.example.demo.domain.dto.MedicalConsultationDTO;
 import com.example.demo.domain.service.ConsultaMedicaService;
 
@@ -56,5 +58,14 @@ public class ConsultaMedicaController {
     public List<MedicalConsultationDTO> getMedicalConsultationByPatientId(@PathVariable long id){
         return consultaService.getMedicalConsultationByPatientId(id);
     }
-    
+
+    @GetMapping("/diagnostico-frecuente")
+    public List<DiagnosisDTO> getMostFrequentDiagnosis(){
+        return consultaService.getMostFrequentDiagnosis();
+    }
+
+    @GetMapping("/diagnostico-frecuente-fecha")
+    public List<DiagnosisDTO> getMostFrequentDiagnosisByDate(@RequestParam("fechaInicio") String iDate, @RequestParam("fechaFin") String fDate){
+        return consultaService.getMostFrequentDiagnosisByDate(iDate, fDate);
+    }
 }

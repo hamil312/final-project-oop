@@ -1,5 +1,6 @@
 package com.example.demo.domain.service;
 
+import com.example.demo.domain.dto.DiagnosisDTO;
 import com.example.demo.domain.dto.MedicalConsultationDTO;
 import com.example.demo.infraestructure.repositories.ConsultaMedicaImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,13 @@ public class ConsultaMedicaService {
     }
     public List<MedicalConsultationDTO> getMedicalConsultationByPatientId(Long id) {
         return consultaMedicaImpl.getMedicalConsultationByPatientId(id);
+    }
+
+    public List<DiagnosisDTO> getMostFrequentDiagnosis() {
+        return consultaMedicaImpl.getMostFrequentDiagnosis();
+    }
+
+    public List<DiagnosisDTO> getMostFrequentDiagnosisByDate(String iDate, String fDate) {
+        return consultaMedicaImpl.getMostFrequentDiagnosisByDate(iDate, fDate);
     }
 }
