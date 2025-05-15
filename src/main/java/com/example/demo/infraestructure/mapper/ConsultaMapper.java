@@ -21,7 +21,9 @@ public interface ConsultaMapper {
         @Mapping(source = "observaciones", target ="observations"),
         @Mapping(source = "medicoId", target = "medicId"),
         @Mapping(source = "citaId", target = "appointmentId"),
-        @Mapping(source = "pacienteId", target = "patientId")
+        @Mapping(source = "pacienteId", target = "patientId"),
+        @Mapping(source = "medicoNombre", target = "medicName"),
+        @Mapping(source = "pacienteNombre", target = "patientName")
     })
     MedicalConsultationDTO toMedicalConsultationDTO(ConsultaMedica consultaMedica);
     List<MedicalConsultationDTO> toMedicalConsultationsDTO(List<ConsultaMedica> consultasMedicas);

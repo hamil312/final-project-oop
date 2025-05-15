@@ -4,11 +4,11 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.example.demo.domain.dto.AppointmentDTO;
+import com.example.demo.domain.dto.CitaDTO;
 
-@FeignClient(name = "appointment-client", url = "http://localhost:8090")
+@FeignClient(name = "appointment-client", url = "https://citaspoo-production.up.railway.app/")
 public interface CitaCliente {
 
-    @GetMapping("/appointments/{id}")
-    AppointmentDTO getAppointmentById(@PathVariable("id") Long id);
+    @GetMapping("/citas/{id}")
+    CitaDTO getAppointmentById(@PathVariable("id") Long id);
 }

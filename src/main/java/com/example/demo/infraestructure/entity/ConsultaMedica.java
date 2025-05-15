@@ -1,5 +1,7 @@
 package com.example.demo.infraestructure.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,25 +12,29 @@ public class ConsultaMedica {
     @Column(name = "id")
     private Long id;
 
-    private String fecha;
+    private LocalDateTime fecha;
     private String diagnostico;
     private String prescripcion;
     private String observaciones;
     private Long medicoId;
+    private String medicoNombre;
     private Long citaId;
     private Long pacienteId;
+    private String pacienteNombre;
 
     public ConsultaMedica() {
     }
 
-    public ConsultaMedica(String fecha, String diagnostico, String prescripcion, String observaciones, Long medicoId, Long citaId, Long pacienteId) {
+    public ConsultaMedica(LocalDateTime fecha, String diagnostico, String prescripcion, String observaciones, Long medicoId, Long citaId, Long pacienteId, String pacienteNombre, String medicoNombre) {
         this.fecha = fecha;
         this.diagnostico = diagnostico;
         this.prescripcion = prescripcion;
         this.observaciones = observaciones;
         this.medicoId = medicoId;
+        this.medicoNombre = medicoNombre;
         this.citaId = citaId;
         this.pacienteId = pacienteId;
+        this.pacienteNombre = pacienteNombre;
     }
 
     public Long getPacienteId() {
@@ -45,10 +51,10 @@ public class ConsultaMedica {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
     public String getDiagnostico() {
@@ -81,4 +87,22 @@ public class ConsultaMedica {
     public void setCitaId(Long citaId) {
         this.citaId = citaId;
     }
+
+    public String getMedicoNombre() {
+        return medicoNombre;
+    }
+
+    public void setMedicoNombre(String medicoNombre) {
+        this.medicoNombre = medicoNombre;
+    }
+
+    public String getPacienteNombre() {
+        return pacienteNombre;
+    }
+
+    public void setPacienteNombre(String pacienteNombre) {
+        this.pacienteNombre = pacienteNombre;
+    }
+
+    
 }

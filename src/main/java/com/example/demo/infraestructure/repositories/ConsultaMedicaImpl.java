@@ -14,7 +14,7 @@ import com.example.demo.infraestructure.client.CitaCliente;
 import com.example.demo.infraestructure.crud.ConsultaMedicaRepository;
 import com.example.demo.infraestructure.entity.ConsultaMedica;
 import com.example.demo.infraestructure.mapper.ConsultaMapper;
-import com.example.demo.domain.dto.AppointmentDTO;
+import com.example.demo.domain.dto.CitaDTO;
 import com.example.demo.domain.dto.DiagnosisDTO;
 import com.example.demo.domain.dto.MedicalConsultationDTO;
 import com.example.demo.domain.repository.IConsultaMedica;
@@ -44,14 +44,16 @@ public class ConsultaMedicaImpl implements IConsultaMedica {
 
     @Override
     public MedicalConsultationDTO saveMedicalConsultation(MedicalConsultationDTO dto) {
-        AppointmentDTO appointment = appointmentClient.getAppointmentById(dto.getAppointmentId());
+        CitaDTO appointment = appointmentClient.getAppointmentById(dto.getAppointmentId());
         if(consultaRepository.findByCitaId(appointment.getId()) != null){
             throw new RuntimeException("La cita ya tiene una consulta médica asociada");
         }
 
-        dto.setDate(appointment.getDate());
-        dto.setMedicId(appointment.getMedicId());
-        dto.setPatientId(appointment.getPatientId());
+        dto.setDate(appointment.getFechaHora());
+        dto.setMedicId(appointment.getMedicoId());
+        dto.setPatientId(appointment.getPacienteId());
+        dto.setPatientName(appointment.getNombrePaciente());
+        dto.setMedicName(appointment.getNombreMedico());
 
         ConsultaMedica consultaMedica = consultaMapper.toConsultaMedica(dto);
         return consultaMapper.toMedicalConsultationDTO(consultaRepository.save(consultaMedica));
@@ -123,7 +125,7 @@ public class ConsultaMedicaImpl implements IConsultaMedica {
         List<ConsultaMedica> consultas = new ArrayList<ConsultaMedica>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         for(ConsultaMedica unConsulta: unfilteredConsultas){
-            LocalDate cDate = LocalDate.parse(unConsulta.getFecha().substring(0, 10), formatter);
+            LocalDate cDate = LocalDate.parse(unConsulta.getFecha().format(formatter), formatter);
             LocalDate sDate = LocalDate.parse(iDate, formatter);
             LocalDate eDate = LocalDate.parse(fDate, formatter);
             if(cDate.isAfter(sDate.minusDays(1)) && cDate.isBefore(eDate.plusDays(1))){

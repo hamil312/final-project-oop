@@ -1,14 +1,18 @@
 package com.example.demo.domain.dto;
 
+import java.time.LocalDateTime;
+
 public class MedicalConsultationDTO {
     private Long id;
-    private String date;
+    private LocalDateTime date;
     private String diagnosis;
     private String prescription;
     private String observations;
     private Long medicId;
+    private String medicName;
     private Long appointmentId;
     private Long patientId;
+    private String patientName;
 
     public Long getId() {
         return id;
@@ -16,10 +20,10 @@ public class MedicalConsultationDTO {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
     public String getDiagnosis() {
@@ -58,4 +62,18 @@ public class MedicalConsultationDTO {
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
+    public String getMedicName() {
+        return medicName;
+    }
+    public void setMedicName(String medicName) {
+        this.medicName = medicName;
+    }
+    public String getPatientName() {
+        return patientName;
+    }
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+
+    
 }
