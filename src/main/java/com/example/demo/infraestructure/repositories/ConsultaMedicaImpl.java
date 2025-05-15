@@ -63,12 +63,19 @@ public class ConsultaMedicaImpl implements IConsultaMedica {
     public MedicalConsultationDTO updateMedicalConsultationById(Long id, MedicalConsultationDTO consultationDTO) {
         ConsultaMedica consultaMedica =  consultaRepository.findById(id).orElseThrow(() -> new RuntimeException("ConsultaMedica no encontrado"));
         ConsultaMedica ConsultaMedicaUpdate = consultaMapper.toConsultaMedica(consultationDTO);
-        consultaMedica.setFecha(ConsultaMedicaUpdate.getFecha());
+        consultaMedica.setCitaId(ConsultaMedicaUpdate.getCitaId());
+        CitaDTO appointment = appointmentClient.getAppointmentById(ConsultaMedicaUpdate.getCitaId());
+        if(consultaRepository.findByCitaId(appointment.getId()) != null){
+            throw new RuntimeException("La cita ya tiene una consulta médica asociada");
+        }
+        consultaMedica.setFecha(appointment.getFechaHora());
         consultaMedica.setDiagnostico(ConsultaMedicaUpdate.getDiagnostico());
         consultaMedica.setPrescripcion(ConsultaMedicaUpdate.getPrescripcion());
-        consultaMedica.setMedicoId(ConsultaMedicaUpdate.getMedicoId());
-        consultaMedica.setCitaId(ConsultaMedicaUpdate.getCitaId());
-        consultaMedica.setPacienteId(ConsultaMedicaUpdate.getPacienteId());
+        consultaMedica.setMedicoId(appointment.getMedicoId());
+        consultaMedica.setPacienteId(appointment.getPacienteId());
+        consultaMedica.setPacienteNombre(appointment.getNombrePaciente());
+        consultaMedica.setMedicoNombre(appointment.getNombreMedico());
+        consultaMedica.setObservaciones(ConsultaMedicaUpdate.getObservaciones());
         return consultaMapper.toMedicalConsultationDTO(consultaRepository.save(consultaMedica));
     }
 
