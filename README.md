@@ -20,45 +20,73 @@ Se trata del backend o API de un microservicio de consultas para un sistema de a
 A continucación se muestran ejemplos de consultas REST que se pueden realizar al sistema
 
 ### GET /consultas
-
+Local
 ```cmd
 curl --location 'http://localhost:8080/consulta'
 ```
+Despliegue
+```cmd
+curl --location 'https://final-project-oop-production.up.railway.app/consulta'
+```
 
 ### GET /consultas/{id}
-
+Local
 ```cmd
 curl --location 'http://localhost:8080/consulta/cita/10'
+```
+Despliegue
+```cmd
+curl --location 'https://final-project-oop-production.up.railway.app/consulta/cita/10'
 ```
 
 ### POST /consultas
-
+Local
 ```cmd
 curl --location 'http://localhost:8080/consulta' --header 'Content-Type: application/json' --data '{"diagnosis": "Covid2","prescription": "Paracetamol 1","observations": "Ninguna","appointmentId": 7}'
 ```
+Despliegue
+```cmd
+curl --location 'https://final-project-oop-production.up.railway.app/consulta' --header 'Content-Type: application/json' --data '{"diagnosis": "Covid2","prescription": "Paracetamol 1","observations": "Ninguna","appointmentId": 7}'
+```
 
 ### GET /consultas/cita/{citaId}
-
+Local
 ```cmd
 curl --location 'http://localhost:8080/consulta/cita/10'
 ```
+Despliegue
+```cmd
+curl --location 'https://final-project-oop-production.up.railway.app/consulta/cita/10'
+```
 
 ### GET /consultas/paciente/{pacienteId}
-
+Local
 ```cmd
 curl --location 'http://localhost:8080/consulta/paciente/1'
 ```
+Despliegue
+```cmd
+curl --location 'https://final-project-oop-production.up.railway.app/consulta/paciente/1'
+```
 
 ### GET /consultas/diagnostico-frecuente
-
+Local
 ```cmd
 curl --location 'http://localhost:8080/consulta/diagnostico-frecuente'
 ```
+Despliegue
+```cmd
+curl --location 'https://final-project-oop-production.up.railway.app/consulta/diagnostico-frecuente'
+```
 
 ### GET /consulta/diagnostico-frecuente-fecha?
-
+Local
 ```cmd
 curl --location 'http://localhost:8080/consulta/diagnostico-frecuente-fecha?fechaInicio=2005-12-12&fechaFin=2007-12-12'
+```
+Despliegue
+```cmd
+curl --location 'https://final-project-oop-production.up.railway.app/consulta/diagnostico-frecuente-fecha?fechaInicio=2005-12-12&fechaFin=2007-12-12'
 ```
 
 ## Repositorio
