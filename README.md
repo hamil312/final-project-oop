@@ -32,21 +32,21 @@ curl --location 'https://final-project-oop-production.up.railway.app/consulta'
 ### GET /consultas/{id}
 Local
 ```cmd
-curl --location 'http://localhost:8080/consulta/cita/10'
+curl --location 'http://localhost:8080/consulta/1'
 ```
 Despliegue
 ```cmd
-curl --location 'https://final-project-oop-production.up.railway.app/consulta/cita/10'
+curl --location 'https://final-project-oop-production.up.railway.app/consulta/1'
 ```
 
 ### POST /consultas
 Local
 ```cmd
-curl --location 'http://localhost:8080/consulta' --header 'Content-Type: application/json' --data '{"diagnosis": "Covid2","prescription": "Paracetamol 1","observations": "Ninguna","appointmentId": 7}'
+curl --location 'http://localhost:8080/consulta' --header 'Content-Type: application/json' --data '{"diagnosis": "Covid2","prescription": "Paracetamol 1","observations": "Ninguna","appointmentId": 12}'
 ```
 Despliegue
 ```cmd
-curl --location 'https://final-project-oop-production.up.railway.app/consulta' --header 'Content-Type: application/json' --data '{"diagnosis": "Covid2","prescription": "Paracetamol 1","observations": "Ninguna","appointmentId": 7}'
+curl --location 'https://final-project-oop-production.up.railway.app/consulta' --header 'Content-Type: application/json' --data '{"diagnosis": "Covid2","prescription": "Paracetamol 1","observations": "Ninguna","appointmentId": 1}'
 ```
 
 ### GET /consultas/cita/{citaId}
@@ -56,7 +56,7 @@ curl --location 'http://localhost:8080/consulta/cita/10'
 ```
 Despliegue
 ```cmd
-curl --location 'https://final-project-oop-production.up.railway.app/consulta/cita/10'
+curl --location 'https://final-project-oop-production.up.railway.app/consulta/cita/1'
 ```
 
 ### GET /consultas/paciente/{pacienteId}
